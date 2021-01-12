@@ -1,0 +1,21 @@
+{
+  "name": "vue2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "cross-env ENV=development rollup -c -w",
+    "prod": "cross-env ENV=production rollup -c",
+    "build:dev": "rollup -c"
+  },
+  "author": "duqingyu",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@rollup/plugin-babel": "^5.2.2",
+    "cross-env": "^7.0.3",
+    "rollup": "^2.36.1",
+    "rollup-plugin-serve": "^1.1.0"
+  }
+}

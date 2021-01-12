@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue2.x学习demo</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>模板语法：{{a}}</p>
+      <p>
+        <span>双向绑定：{{b}}</span>
+        <input type="text" v-model="b" />
+      </p>
+    </div>
+    <script src="/dist/vue2.x/vue.js"></script>
+    <script>
+      let vm = new Vue({
+        el: '#app',
+        props: {},
+        data() {
+          return {
+            a: 1,
+            b: 2,
+            c: { d: 1 }
+          }
+        },
+        computed: {},
+        watch: {},
+        methods: {
+          method1() {
+            console.log('这是1方法')
+            this.b = 3
+          },
+          method2() {
+            console.log('这是2方法')
+          }
+        }
+      })
+      console.log('vm实例：', vm)
+      setTimeout(() => {
+        vm.method1()
+      }, 4000)
+    </script>
+  </body>
+</html>
