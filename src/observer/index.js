@@ -59,7 +59,6 @@ function defineReactive(data, key, value) {
         return
       }
       observe(value)
-      console.log('data里的值发生变化了')
       value = newVal
       // 发布更新
       dep.notify()

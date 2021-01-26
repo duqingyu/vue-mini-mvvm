@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue2.x学习demo</title>
+    <title>2.0-mini-mvvm</title>
   </head>
   <body>
     <div id="app">
       <p>模板语法：{{a}}</p>
-      <p>
+      <p style="color: red; font-size: 20px">
         <span>双向绑定：{{b}}</span>
         <input type="text" v-model="b" />
       </p>
@@ -26,21 +26,40 @@
           }
         },
         computed: {},
-        watch: {},
+        watch: {
+          a: {
+            handler(newVal, oldVal) {
+              console.log('a的watch触发了：', newVal, oldVal)
+            },
+            immediate: true
+          },
+          b: 'method2',
+          c(newVal, oldVal) {
+            console.log('c的watch触发了：', newVal, oldVal)
+          }
+        },
         methods: {
           method1() {
-            console.log('这是1方法')
+            console.log('这是1方法,更新data数据')
             this.b = 3
           },
-          method2() {
-            console.log('这是2方法')
+          method2(newVal, oldVal) {
+            console.log('b的watch触发了：', newVal, oldVal)
           }
+        },
+        created() {
+          console.log('生命周期出发：created')
+        },
+        mounted() {
+          console.log('\n\n\n\n\n')
+          console.log('生命周期出发：mounted')
+          this.method1()
+          setTimeout(() => {
+            this.b = 4
+          }, 3000)
         }
       })
       console.log('vm实例：', vm)
-      setTimeout(() => {
-        vm.method1()
-      }, 4000)
     </script>
   </body>
 </html>
